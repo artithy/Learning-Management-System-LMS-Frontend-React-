@@ -30,8 +30,9 @@ export default function AdminSignup() {
 
         try {
             const res = await getAxios().post("/admin/register", form);
+            console.log(res.data);
             toast.success("Admin registered successfully");
-            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("token", res.data.token || res.data?.token);
             setTimeout(() => navigate("/admin/dashboard"), 1500);
         } catch (error) {
             toast.error(error.response?.data?.message || "Signup failed");

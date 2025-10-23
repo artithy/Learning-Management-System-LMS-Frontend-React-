@@ -24,8 +24,8 @@ export default function AdminLogin() {
 
         try {
             const res = await getAxios().post("/admin/login", form);
-            toast.success("Login successful!");
             localStorage.setItem("token", res.data.token);
+            toast.success("Login successful!");
             setTimeout(() => navigate("/admin/dashboard"), 1500);
         } catch (error) {
             toast.error(error.response?.data?.message || "Invalid credentials");

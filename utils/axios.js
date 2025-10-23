@@ -1,11 +1,17 @@
-import axios from 'axios';
+import axios from "axios";
 
 const getAxios = () => {
-    return axios.create({
+    const token = localStorage.getItem("token");
+    const instance = axios.create({
         baseURL: import.meta.env.VITE_API_URL,
-        headers: { "Content-Type": "application/json" },
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            ...(token && { Authorization: `Bearer ${token}` }),
+        },
     });
-};
 
+    return instance;
+};
 
 export default getAxios;
