@@ -8,11 +8,13 @@ import StudentLogin from './components/student/StudentLogin';
 import AdminSignup from './components/admin/AdminSignup.jsx';
 import AdminLogin from './components/admin/AdminLogin';
 import Category from './components/Category';
+import AddCourse from './components/AddCourse.jsx';
+
 
 function AppContent() {
   const location = useLocation();
 
-  const hideNavbarRoutes = ['/admin/register', '/admin/login', '/Category'];
+  const hideNavbarRoutes = ['/admin/register', '/admin/login', '/Category', '/add-course'];
 
   return (
     <>
@@ -25,7 +27,8 @@ function AppContent() {
         <Route path="/student/login" element={<StudentLogin />} />
         <Route path="/admin/register" element={<AdminSignup />} />
         <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/Category" element={<Category />} /> {/* Category route */}
+        <Route path="/Category" element={<Category />} />
+        <Route path="/add-course" element={<AddCourse />} />
       </Routes>
     </>
   );
