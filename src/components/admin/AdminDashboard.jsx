@@ -1,10 +1,19 @@
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import AddCourse from '../AddCourse';
 import CourseList from '../CourseList';
 import Category from '../Category';
 
 export default function AdminDashboard() {
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("admin");
+
+        navigate("/admin/login");
+        alert("Logout Successful");
+    }
 
     return (
         <div className="flex min-h-screen bg-gray-50">
@@ -16,6 +25,13 @@ export default function AdminDashboard() {
                     <Link to="/admin/course-list" className="block hover:text-blue-600">All Courses</Link>
                     <Link to="/admin/category" className="block hover:text-blue-600">Add Category</Link>
                 </nav>
+
+                <button
+                    onClick={handleLogout}
+                    className="mt-6 w-full text-left text-red-600 hover:text-red-700 font-semibold"
+                >
+                    Logout
+                </button>
             </aside>
 
             <div className="flex-1 ml-64 p-6">
