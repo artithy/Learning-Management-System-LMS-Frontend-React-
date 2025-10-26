@@ -21,9 +21,9 @@ export default function AdminDashboard() {
                 <h2 className="text-xl font-bold text-blue-700 mb-6">Admin Panel</h2>
                 <nav className="flex flex-col space-y-2">
                     <Link to="/admin" className="block hover:text-blue-600">Dashboard Home</Link>
+                    <Link to="/admin/category" className="block hover:text-blue-600">Add Category</Link>
                     <Link to="/admin/add-course" className="block hover:text-blue-600">Add Course</Link>
                     <Link to="/admin/course-list" className="block hover:text-blue-600">All Courses</Link>
-                    <Link to="/admin/category" className="block hover:text-blue-600">Add Category</Link>
                 </nav>
 
                 <button
@@ -37,9 +37,9 @@ export default function AdminDashboard() {
             <div className="flex-1 ml-64 p-6">
                 <Routes>
                     <Route index element={<h1 className="text-2xl font-bold">Welcome to Dashboard</h1>} />
+                    <Route path="category" element={<Category />} />
                     <Route path="add-course" element={<AddCourse />} />
                     <Route path="course-list" element={<CourseList />} />
-                    <Route path="category" element={<Category />} />
                 </Routes>
             </div>
         </div>

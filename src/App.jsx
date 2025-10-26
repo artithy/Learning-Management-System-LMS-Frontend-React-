@@ -8,6 +8,9 @@ import StudentLogin from './components/student/StudentLogin';
 import AdminSignup from './components/admin/AdminSignup';
 import AdminLogin from './components/admin/AdminLogin';
 import AdminDashboard from './components/admin/AdminDashboard';
+import CourseDetails from "./components/CourseDetails";
+import CourseList from './components/CourseList';
+import CourseGrid from './components/CourseGrid';
 
 function AppContent() {
   const location = useLocation();
@@ -35,6 +38,9 @@ function AppContent() {
         <Route path="/admin/login" element={<AdminLogin />} />
 
         <Route path="/admin/*" element={<AdminDashboard />} />
+        <Route path="/course/:id" element={<CourseDetails />} />
+        <Route path="/courses" element={<CourseGrid showCategories={true} />} />
+
       </Routes>
     </>
   );

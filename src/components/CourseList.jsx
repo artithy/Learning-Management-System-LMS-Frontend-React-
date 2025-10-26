@@ -11,7 +11,7 @@ export default function CourseList() {
         try {
             const res = await getAxios().get("/courses");
             console.log(res.data);
-            setCourses(res.data || []); // ✅ fixed
+            setCourses(res.data || []);
         } catch (error) {
             console.log(error);
             toast.error("Failed to load Data");
@@ -24,7 +24,7 @@ export default function CourseList() {
     const handleDelete = async (id) => {
         if (!window.confirm("Are you sure you want to delete this course?")) return;
         try {
-            const res = await getAxios().post(`/deleteCourses/${id}`); // ✅ fixed
+            const res = await getAxios().post(`/deleteCourses/${id}`);
             toast.success("Course deleted successfully");
             fetchCourses();
         } catch (error) {
@@ -63,6 +63,7 @@ export default function CourseList() {
                                         alt={course.title}
                                         className="w-12 h-12 object-cover rounded"
                                     />
+
                                 ) : (
                                     "No Image"
                                 )}
