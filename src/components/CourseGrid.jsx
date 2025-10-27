@@ -23,7 +23,7 @@ export default function CourseGrid({ showCategories = false }) {
     const fetchCategories = async () => {
         if (!showCategories) return;
         try {
-            const res = await getAxios().get("/categories/public"); // ensure route exists
+            const res = await getAxios().get("/categories/public");
             if (Array.isArray(res.data)) {
                 setCategories(res.data);
             } else {
@@ -45,7 +45,7 @@ export default function CourseGrid({ showCategories = false }) {
     const filteredCourses = selectedCategory === "All" ? courses : courses.filter(c => c.category?.name === selectedCategory);
 
     return (
-        <div className="max-w-7xl mx-auto px-4 py-8 mt-20">
+        <div className="max-w-7xl mx-auto px-4 py-8 ">
             <ToastContainer position="top-right" autoClose={3000} />
 
             {showCategories && (

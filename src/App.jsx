@@ -11,6 +11,8 @@ import AdminDashboard from './components/admin/AdminDashboard';
 import CourseDetails from "./components/CourseDetails";
 import CourseList from './components/CourseList';
 import CourseGrid from './components/CourseGrid';
+import StudentDashboard from './components/student/StudentDashboard';
+import StudentProfile from './components/student/StudentProfile';
 
 function AppContent() {
   const location = useLocation();
@@ -40,6 +42,8 @@ function AppContent() {
         <Route path="/admin/*" element={<AdminDashboard />} />
         <Route path="/course/:id" element={<CourseDetails />} />
         <Route path="/courses" element={<CourseGrid showCategories={true} />} />
+        <Route path="/student/dashboard" element={<StudentDashboard />} />
+        <Route path="/student/profile" element={<StudentProfile />} />
 
       </Routes>
     </>

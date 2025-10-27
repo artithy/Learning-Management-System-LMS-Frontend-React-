@@ -31,7 +31,8 @@ export default function StudentLogin() {
             toast.success("Login successful!");
             localStorage.setItem("token", res.data.token);
 
-            setTimeout(() => navigate(""), 2000);
+            setTimeout(() => navigate("/student/dashboard"), 2000);
+
             console.log(res.data);
 
         } catch (error) {
