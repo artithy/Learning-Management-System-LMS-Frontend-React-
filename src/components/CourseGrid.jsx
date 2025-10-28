@@ -42,6 +42,49 @@ export default function CourseGrid({ showCategories = false }) {
         fetchCategories();
     }, []);
 
+    const handleEnroll = async (course) => {
+        try {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                navigate('/student/login');
+                return;
+            }
+
+            const courseId = course.id;
+            const amount = course.discount_price || course.price;
+            const user = JSON.parse(localStorage.getItem("student_data"));
+
+            const res = await fetch("http://127.0.0.1:8000/api/create_payment", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
+
+                body: JSON.stringify({
+                    course_id: courseId,
+                    amount,
+                    user_name: user?.name,
+                    user_email: user?.email,
+                    user_phone: user?.phone,
+                }),
+            });
+
+            const data = await res.json();
+
+            if (data.status && data.payment_url) {
+                window.location.href = data.payment_url;
+            } else {
+                toast.error("Failed to intiate payment")
+            }
+        } catch (error) {
+            console.error(error);
+            toast.error("Something went wrong");
+
+        }
+
+    };
+
     const filteredCourses = selectedCategory === "All" ? courses : courses.filter(c => c.category?.name === selectedCategory);
 
     return (
@@ -99,7 +142,13 @@ export default function CourseGrid({ showCategories = false }) {
                             </p>
                             <div className="mt-4 flex justify-between">
                                 <Link to={`/course/${course.id}`} className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">View Details</Link>
-                                <button onClick={() => navigate("/student/login")} className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700">Enroll Now</button>
+                                <button
+                                    onClick={() => handleEnroll(course)}
+                                    className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
+                                >
+                                    Enroll Now
+                                </button>
+
                             </div>
                         </div>
                     </div>
