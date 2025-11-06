@@ -1,8 +1,9 @@
-import React from 'react';
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
-import AddCourse from '../AddCourse';
-import CourseList from '../CourseList';
-import Category from '../Category';
+import { Link, Routes, Route, useNavigate } from "react-router-dom";
+import React from "react";
+import AddCourse from "../AddCourse";
+import CourseList from "../CourseList";
+import Category from "../Category";
+import DashboardHome from "./DashboardHome";
 
 export default function AdminDashboard() {
     const navigate = useNavigate();
@@ -10,7 +11,6 @@ export default function AdminDashboard() {
     const handleLogout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("admin");
-
         navigate("/admin/login");
         alert("Logout Successful");
     }
@@ -20,10 +20,10 @@ export default function AdminDashboard() {
             <aside className="w-64 bg-white shadow-md p-4 fixed h-full">
                 <h2 className="text-xl font-bold text-blue-700 mb-6">Admin Panel</h2>
                 <nav className="flex flex-col space-y-2">
-                    <Link to="/admin" className="block hover:text-blue-600">Dashboard Home</Link>
-                    <Link to="/admin/category" className="block hover:text-blue-600">Add Category</Link>
-                    <Link to="/admin/add-course" className="block hover:text-blue-600">Add Course</Link>
-                    <Link to="/admin/course-list" className="block hover:text-blue-600">All Courses</Link>
+                    <Link to="/admin/dashboard" className="hover:text-blue-600">Dashboard Home</Link>
+                    <Link to="/admin/category" className="hover:text-blue-600">Add Category</Link>
+                    <Link to="/admin/add-course" className="hover:text-blue-600">Add Course</Link>
+                    <Link to="/admin/course-list" className="hover:text-blue-600">All Courses</Link>
                 </nav>
 
                 <button
@@ -36,10 +36,11 @@ export default function AdminDashboard() {
 
             <div className="flex-1 ml-64 p-6">
                 <Routes>
-                    <Route index element={<h1 className="text-2xl font-bold">Welcome to Dashboard</h1>} />
+                    <Route path="dashboard" element={<DashboardHome />} />
                     <Route path="category" element={<Category />} />
                     <Route path="add-course" element={<AddCourse />} />
                     <Route path="course-list" element={<CourseList />} />
+                    <Route path="" element={<DashboardHome />} />
                 </Routes>
             </div>
         </div>

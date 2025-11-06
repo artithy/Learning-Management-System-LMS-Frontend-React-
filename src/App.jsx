@@ -9,26 +9,20 @@ import AdminSignup from './components/admin/AdminSignup';
 import AdminLogin from './components/admin/AdminLogin';
 import AdminDashboard from './components/admin/AdminDashboard';
 import CourseDetails from "./components/CourseDetails";
-import CourseList from './components/CourseList';
 import CourseGrid from './components/CourseGrid';
 import StudentDashboard from './components/student/StudentDashboard';
 import StudentProfile from './components/student/StudentProfile';
+import PaymentSuccess from './components/student/PaymentSuccess';
+import StudentMyEnrollment from './components/student/StudentMyEnrollments';
 
 function AppContent() {
   const location = useLocation();
 
-  const hideNavbarRoutes = [
-    '/admin/register',
-    '/admin/login',
-    '/admin',
-    '/admin/add-course',
-    '/admin/course-list',
-    '/admin/category',
-  ];
+  const hideNavbar = location.pathname.startsWith("/admin");
 
   return (
     <>
-      {!hideNavbarRoutes.includes(location.pathname) && <Navbar />}
+      {!hideNavbar && <Navbar />}
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -38,13 +32,15 @@ function AppContent() {
 
         <Route path="/admin/register" element={<AdminSignup />} />
         <Route path="/admin/login" element={<AdminLogin />} />
-
         <Route path="/admin/*" element={<AdminDashboard />} />
+
         <Route path="/course/:id" element={<CourseDetails />} />
         <Route path="/courses" element={<CourseGrid showCategories={true} />} />
+
         <Route path="/student/dashboard" element={<StudentDashboard />} />
         <Route path="/student/profile" element={<StudentProfile />} />
-
+        <Route path="/student/payment-success" element={<PaymentSuccess />} />
+        <Route path="/student/enrollments" element={<StudentMyEnrollment />} />
       </Routes>
     </>
   );

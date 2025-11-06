@@ -25,7 +25,7 @@ export default function CourseDetails() {
         return <p className="text-center mt-20 text-gray-500 text-lg">Loading course...</p>;
 
     return (
-        <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="max-w-7xl mx-auto px-6 py-16 mt-20">
             <ToastContainer position="top-right" autoClose={3000} />
 
             <div className="flex flex-col md:flex-row gap-12 bg-white p-10 rounded-3xl shadow-xl border border-gray-300">

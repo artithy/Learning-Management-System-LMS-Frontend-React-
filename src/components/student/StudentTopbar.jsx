@@ -37,10 +37,7 @@ export default function StudentTopbar() {
                             View Profile
                         </button>
 
-                        <button
-                            onClick={() => navigate("/student/enrollments")}
-                            className="block px-4 py-2 hover:bg-blue-100 w-full text-left"
-                        >
+                        <button onClick={() => navigate("/student/enrollments")} className="block px-4 py-2 hover:bg-blue-100 w-full text-left">
                             My Enrollments
                         </button>
 
