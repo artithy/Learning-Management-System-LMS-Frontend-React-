@@ -4,10 +4,10 @@ import StudentTopbar from './StudentTopbar';
 
 export default function StudentDashboard() {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 py-10 mt-10">
+        <div className="min-h-screen bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300">
             <StudentTopbar />
-            <div className="py-10">
-                <CourseGrid showCategories={true} showEnrolledOnly={true} />
+            <div className="pt-20 px-4">
+                <CourseGrid showCategories={true} showEnrolledOnly={true} noTopMargin={true} />
             </div>
         </div>
     );

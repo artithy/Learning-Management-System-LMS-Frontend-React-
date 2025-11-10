@@ -4,7 +4,7 @@ import getAxios from "../../utils/axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function CourseGrid({ showCategories = false, showEnrolledOnly = false }) {
+export default function CourseGrid({ showCategories = false, showEnrolledOnly = false, noTopMargin = false }) {
     const [courses, setCourses] = useState([]);
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState("All");
@@ -95,7 +95,6 @@ export default function CourseGrid({ showCategories = false, showEnrolledOnly = 
             }
 
             if (data.status && data.payment_url) {
-                // **Add course to enrolledCourses state**
                 setEnrolledCourses(prev => [...prev, course.id]);
                 window.location.href = data.payment_url;
             } else {
@@ -114,7 +113,8 @@ export default function CourseGrid({ showCategories = false, showEnrolledOnly = 
             : courses.filter((c) => c.category?.name === selectedCategory);
 
     return (
-        <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className={`max-w-7xl mx-auto px-4 py-8 ${noTopMargin ? "mt-0" : "mt-15"}`}>
+
             <ToastContainer position="top-right" autoClose={3000} />
 
             {showCategories && (

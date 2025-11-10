@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import getAxios from '../../../utils/axios';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import StudentTopbar from "./StudentTopbar";
+
 
 export default function StudentMyEnrollment() {
     const [enrollments, setEnrollments] = useState([]);
@@ -23,6 +25,7 @@ export default function StudentMyEnrollment() {
 
     return (
         <>
+            <StudentTopbar />
             <div className="max-w-7xl mx-auto px-4 py-8">
                 <ToastContainer position="top-right" autoClose={3000} />
                 <div className="text-2xl font-semibold mb-6">

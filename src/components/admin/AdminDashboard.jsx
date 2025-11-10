@@ -4,6 +4,7 @@ import AddCourse from "../AddCourse";
 import CourseList from "../CourseList";
 import Category from "../Category";
 import DashboardHome from "./DashboardHome";
+import AdminEnrollments from "./AdminEnrollments";
 
 export default function AdminDashboard() {
     const navigate = useNavigate();
@@ -24,6 +25,7 @@ export default function AdminDashboard() {
                     <Link to="/admin/category" className="hover:text-blue-600">Add Category</Link>
                     <Link to="/admin/add-course" className="hover:text-blue-600">Add Course</Link>
                     <Link to="/admin/course-list" className="hover:text-blue-600">All Courses</Link>
+                    <Link to="/admin/enrollments" className="hover:text-blue-600">All Enrollments</Link>
                 </nav>
 
                 <button
@@ -40,6 +42,7 @@ export default function AdminDashboard() {
                     <Route path="category" element={<Category />} />
                     <Route path="add-course" element={<AddCourse />} />
                     <Route path="course-list" element={<CourseList />} />
+                    <Route path="enrollments" element={<AdminEnrollments />} />
                     <Route path="" element={<DashboardHome />} />
                 </Routes>
             </div>
